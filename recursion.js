@@ -72,3 +72,101 @@ console.log(fibonacciRecursive(10));
 //Quick sort
 //Tree traversal
 //Graph traversal
+
+const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+
+function mergeSort (array) {
+  if (array.length === 1) {
+    return array
+  }
+  // Split Array in into right and left
+  const length = array.length;
+  const middle = Math.floor(length / 2)
+  const left = array.slice(0, middle) 
+  const right = array.slice(middle)
+  // console.log('left:', left);
+  // console.log('right:', right);
+
+  
+  return merge(
+    mergeSort(left),
+    mergeSort(right)
+  )
+}
+
+function merge(left, right){
+  const result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  while(leftIndex < left.length && 
+        rightIndex < right.length){
+     if(left[leftIndex] < right[rightIndex]){
+       result.push(left[leftIndex]);
+       leftIndex++;
+     } else{
+       result.push(right[rightIndex]);
+       rightIndex++
+    }
+  }  
+  // console.log(left, right)
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}
+
+
+const answer = mergeSort(numbers);
+console.log(answer);
+
+
+//[99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+//[99,44,6,2,1] [5, 63, 87, 283, 4, 0]
+//[99, 44] [6, 2, 1]  [5,63,87] [283, 4, 0]
+//[99] [44] [6] [2,1] [5] [63, 87] [283] [4, 0]
+//[99] [44] [6] [2] [1] [5] [63] [87] [283] [4] [0]
+//
+//
+//merge sort
+//      merge 
+//          merge sort [99,44,6,2,1]
+//                  merge
+//                      merge sort [99, 44]
+//                              merge
+//                                  merge sort [99]
+//                                  merge sort [44]
+//                      merge sort [6, 2, 1]
+//                              merge
+//                                  merge sort [6]
+//                                  merge sort [2,1]
+//                                          merge
+//                                              merge sort [2]
+//                                              merge sort [1]
+//          merge sort [5, 63, 87, 283, 4, 0]
+//                  merge
+//                      merge sort [5,63,87]
+//                              merge
+//                                  merge sort [5]
+//                                  merge sort [63, 87]
+//                                          merge
+//                                              merge sort [63]
+//                                              merge sort [87]
+//                      merge sort [283, 4, 0]
+//                              merge
+//                                  merge sort [283]
+//                                  merge sort [4, 0]
+//                                            merge
+//                                              merge sort [4]
+//                                              merge sort [0]
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
