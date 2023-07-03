@@ -197,7 +197,13 @@ console.log(quickSort(arr));
 //          [1,2,67,83,102]
 
 
-
+//Easy to implement, very fast with small data input
+//Bubble sort, don't use it, it's shit
+//Selection Sort, don't use it, it's shit
+//Merge sort, good because has O(n log(n)) time complexity always, space complexity O(n)
+//Quick sort is the preferred method due to the balance of time and space complexity
+//Be careful of worst case scenario where the time complexity is O(n^2) due to a poor choice
+//of the pivot point
 
 
 
