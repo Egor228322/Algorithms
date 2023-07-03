@@ -88,7 +88,7 @@ function mergeSort (array) {
   // console.log('right:', right);
 
   
-  return merge(
+  return merge (
     mergeSort(left),
     mergeSort(right)
   )
@@ -103,7 +103,7 @@ function merge(left, right){
      if(left[leftIndex] < right[rightIndex]){
        result.push(left[leftIndex]);
        leftIndex++;
-     } else{
+     } else {
        result.push(right[rightIndex]);
        rightIndex++
     }
@@ -122,43 +122,79 @@ console.log(answer);
 //[99, 44] [6, 2, 1]  [5,63,87] [283, 4, 0]
 //[99] [44] [6] [2,1] [5] [63, 87] [283] [4, 0]
 //[99] [44] [6] [2] [1] [5] [63] [87] [283] [4] [0]
+//[44, 99] [6] [1, 2] [5] [63, 87] [283] [0, 4]
+//[44, 99] [1,2,6] [5, 63, 87] [0, 4, 283]
+//[1, 2, 6, 44, 99] [0, 4, 5, 63, 87, 283]                                     
+//[]
 //
 //
 //merge sort
 //      merge 
 //          merge sort [99,44,6,2,1]
-//                  merge
+//                  merge *
 //                      merge sort [99, 44]
-//                              merge
+//                              merge *
 //                                  merge sort [99]
 //                                  merge sort [44]
 //                      merge sort [6, 2, 1]
-//                              merge
+//                              merge *
 //                                  merge sort [6]
 //                                  merge sort [2,1]
-//                                          merge
+//                                          merge *
 //                                              merge sort [2]
 //                                              merge sort [1]
 //          merge sort [5, 63, 87, 283, 4, 0]
-//                  merge
+//                  merge 
 //                      merge sort [5,63,87]
-//                              merge
+//                              merge *
 //                                  merge sort [5]
 //                                  merge sort [63, 87]
-//                                          merge
+//                                          merge *
 //                                              merge sort [63]
 //                                              merge sort [87]
 //                      merge sort [283, 4, 0]
-//                              merge
+//                              merge *
 //                                  merge sort [283]
 //                                  merge sort [4, 0]
-//                                            merge
+//                                            merge *
 //                                              merge sort [4]
 //                                              merge sort [0]
 //
 //
 //
+const arr = [2,1,83,67,102,0];
 
+const quickSort = function(arr) {
+    if (arr.length < 2) {
+        return arr;
+    }
+    const left = [];
+    const right = [];
+    const pivot = arr[arr.length - 1];
+    
+    for(let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] > pivot) {
+            right.push(arr[i]);
+        } else {
+            left.push(arr[i]);
+        }
+    }
+    
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+console.log(quickSort(arr));
+
+//[2,1,83,67,102,0]
+//             0    quickSort
+//     [2,1]      [83,67,102]        
+//       1  quicksort   102  quicksort
+//         [2]  [83,67]
+//                  67 quickSort
+//                     [83] arr.length < 2
+//              [67, 83]
+//      [1,2]        [67,83,102]
+//          [1,2,67,83,102]
 
 
 
