@@ -34,7 +34,7 @@ returnVal(1000000); */
 //Problems
 //A function that returns the nth fibonacci number
 
-const fib = function(n, memo = {}) {
+/* const fib = function(n, memo = {}) {
     if (memo[String(n)]) return memo[String(n)];
     if (n <= 2) return 1;
 
@@ -45,4 +45,28 @@ const fib = function(n, memo = {}) {
 console.log(fib(6));
 console.log(fib(7));
 console.log(fib(8));
-console.log(fib(50));
+console.log(fib(50)); */
+
+//Compute the number of ways (with the shortest path) to traverse a grid from the starting cell to the last cell 
+//In this problem the base case will be either a (0,n), (n, 0) or a (1,1) size grid
+//Each move, right or down will decrease the size of the grid that needs to be traveled
+
+//In the example, the function will take in two parameters of the height and width of the grid
+
+
+const numPath = function(row, col, memo = {}) {
+
+    const entry = `${row},${col}`;
+
+    if (memo[entry]) return memo[entry];
+    if (row == 0 || col == 0) return 0;
+    if (row == 1 && col == 1) return 1;
+
+    memo[entry] = numPath(row - 1, col, memo) + numPath(row, col - 1,memo);
+    return memo[entry];
+}
+
+console.log(numPath(3,4));
+console.log(numPath(2,3));
+console.log(numPath(3,2));
+console.log(numPath(18,18));
