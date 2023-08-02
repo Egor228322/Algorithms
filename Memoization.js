@@ -54,7 +54,7 @@ console.log(fib(50)); */
 //In the example, the function will take in two parameters of the height and width of the grid
 
 
-const numPath = function(row, col, memo = {}) {
+/* const numPath = function(row, col, memo = {}) {
 
     const entry = `${row},${col}`;
 
@@ -69,4 +69,30 @@ const numPath = function(row, col, memo = {}) {
 console.log(numPath(3,4));
 console.log(numPath(2,3));
 console.log(numPath(3,2));
-console.log(numPath(18,18));
+console.log(numPath(18,18)); */
+
+
+//Write a function canSum(targetSum, [numbers]) , should return boolean if it is possible
+//to generate a targetSum using numbers from the array
+//An element can be used indefinately
+//all input numbers are non-negative
+
+
+const canSum = function(targetSum, numbers, memo = {}) {
+    if (targetSum in memo) return memo[targetSum];
+    if (targetSum == 0) return true;
+    if (targetSum < 0) return false;
+
+    for (let num of numbers) {
+        if (canSum(targetSum - num, numbers, memo)) {
+            memo[targetSum] = true;
+            return true;
+        }
+    }
+
+    memo[targetSum] = false;
+    return false;
+
+}
+
+console.log(canSum(7,[5,4,4,8]));
