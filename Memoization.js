@@ -78,7 +78,7 @@ console.log(numPath(18,18)); */
 //all input numbers are non-negative
 
 
-const canSum = function(targetSum, numbers, memo = {}) {
+/* const canSum = function(targetSum, numbers, memo = {}) {
     if (targetSum in memo) return memo[targetSum];
     if (targetSum == 0) return true;
     if (targetSum < 0) return false;
@@ -95,4 +95,18 @@ const canSum = function(targetSum, numbers, memo = {}) {
 
 }
 
-console.log(canSum(7,[5,4,4,8]));
+console.log(canSum(7,[5,4,4,8])); */
+
+
+//Write a funciton howSum(targetSum, [numbers])
+//The function should return an array containing any combination of elements that adds up to the targeSum
+//If no combination adds up to target, return null
+
+const howSum = function(targetSum, numbers) {
+
+    if (targetSum == 0) return 
+
+
+}
+
+console.log(howSum(7,[5,3,4,7]));
