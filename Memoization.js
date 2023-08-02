@@ -102,11 +102,53 @@ console.log(canSum(7,[5,4,4,8])); */
 //The function should return an array containing any combination of elements that adds up to the targeSum
 //If no combination adds up to target, return null
 
-const howSum = function(targetSum, numbers) {
+/* const howSum = function(targetSum, numbers, memo = {}) {
 
-    if (targetSum == 0) return 
-
+    if (memo[targetSum]) return memo[targetSum];
+    if (targetSum == 0) return [];
+    if (targetSum < 0) return null;
+    
+    for (let num in numbers) {
+        const remainderResult = howSum(targetSum - num, numbers, memo);
+        if (remainderResult) {
+            memo[targetSum] = [...remainderResult, num]
+            return memo[targetSum];
+        }
+    }
+    
+    memo[targetSum] = null;
+    return memo[targetSum];
 
 }
 
-console.log(howSum(7,[5,3,4,7]));
+console.log(howSum(7,[5,3,4,7])); */
+
+
+//Write a function bestSum(targetSum, numbers)
+//The function should return an array containing the shortest combination of numbers that add up
+//to the target sum, if there is a tie, than return either one of the shortest
+
+/* const bestSum = function(targetSum, numbers, memo = {}) {
+
+    if (memo[targetSum]) return memo[targetSum];
+    if (targetSum === 0) return [];
+    if (targetSum < 0) return null;
+
+    let shortestCombo = null;
+
+    for (let num of numbers) {
+        const remainder = bestSum(targetSum - num, numbers, memo);
+        if (remainder) {
+            const combination = [...remainder, num];
+            if (shortestCombo == null || shortestCombo.length > combination.length) {
+                shortestCombo = combination;
+            }
+        }
+    }
+
+    memo[targetSum] = shortestCombo;
+    return shortestCombo;
+
+}
+
+console.log(bestSum(7, [5,3,4,7])); */
