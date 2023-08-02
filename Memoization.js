@@ -152,3 +152,29 @@ console.log(howSum(7,[5,3,4,7])); */
 }
 
 console.log(bestSum(7, [5,3,4,7])); */
+
+
+//Given a targetString and an array of strings, make a canConstruct function that returns a boolean
+//Whether the target string can be constrcuted out of the elements of the array
+
+/* const canConstruct = function(targetString, strings, memo = {}) {
+
+    if (memo[targetString]) return memo[targetString];
+    if (targetString == '') return true;
+
+    for (let string of strings) {
+        if (targetString.indexOf(string) == 0) {
+            const suffix = targetString.slice(string.length);
+            if (canConstruct(suffix, strings, memo)) {
+                memo[targetString] = canConstruct(suffix, strings)
+                return true;
+            }
+        }
+    }
+
+    memo[targetString] = false;
+    return false;
+
+}
+
+console.log(canConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); */
