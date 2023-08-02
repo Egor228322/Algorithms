@@ -178,3 +178,25 @@ console.log(bestSum(7, [5,3,4,7])); */
 }
 
 console.log(canConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); */
+
+//Write a function that returns the number of ways that a targetString can be generated
+
+/* const countConstruct = function(targetString, strings, memo = {}) {
+
+    if (memo[targetString]) return memo[targetString];
+    if (targetString == '') return 1;
+
+    let totalCount = 0;
+
+    for (let string of strings) {
+        if (targetString.indexOf(string) == 0) {
+            const numWays = countConstruct(targetString.slice(string.length), strings, memo);
+            totalCount+= numWays;
+        }
+    }
+    memo[targetString] = totalCount;
+    return totalCount;
+}
+
+console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'abcdef']));
+console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); */
