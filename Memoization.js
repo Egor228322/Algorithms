@@ -200,3 +200,27 @@ console.log(canConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); */
 
 console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'abcdef']));
 console.log(countConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd'])); */
+
+//Write a funciton that will return a 2d array of all the possible combinations of strings
+
+const allConstruct = function (targetString, strings) {
+
+    if (targetString == '') return [[]];
+
+    const result = [];
+
+    for (let string of strings) {
+        if (targetString.indexOf(string) == 0) {
+            const suffix = targetString.slice(string.length);
+            const suffixWays = allConstruct(suffix, strings);
+            const allWays = suffixWays.map(way => [string, ...way]);
+            result.push(...allWays);
+        }
+    }
+
+    return result;
+
+}
+
+
+console.log(allConstruct('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd']));
